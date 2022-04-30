@@ -34,23 +34,14 @@ include_once "conf/conf.php";
 if (isset($_POST['connecter'])){
     if (isset($_POST['mail'])) {
         $mail=htmlspecialchars($_POST['mail']);
-        $sql="SELECT count(mail) as exist, id_user, nom, role from user where mail=:mail";
+        $sql="SELECT count(mail) as exist, id_user, nom, role from user where mail=:mail ";
         $prepare=$conn->prepare($sql);
         $prepare->execute(['mail'=>$mail]);
         $result=$prepare->fetch();
         if ($result["exist"]==1) {
-            $_SESSION['mail']= $_POST['mail'];
-            $_SESSION['nom']= $_POST['nom'];
-            $_SESSION['role'] = $_POST['role'];
-            if ($_POST['role']="root") {
+            if ($mail=='root@root.com') {
                 header("Location:root/home.php");
-            } elseif ($_POST['role']=="admin") {
-                header("Location:user/home.php");
-            } elseif ($_POST['role']=="user"){
-                header("location:admin/home.php");
             }
-        } else{
-            echo"Mail incorrect, réessayez !!!!!!!!!!";
         }
     }
 }
