@@ -42,11 +42,12 @@ if (isset($_POST['connecter'])){
             $_SESSION['mail']= $_POST['mail'];
             $_SESSION['nom']= $_POST['nom'];
             $_SESSION['role'] = $_POST['role'];
-            if ($_POST['role']="root") {
+            
+            if ($result['role']=="root") {
                 header("Location:root/home.php");
-            } elseif ($_POST['role']=="admin") {
+            } elseif ($result['role']=="user") {
                 header("Location:user/home.php");
-            } elseif ($_POST['role']=="user"){
+            } elseif ($result['role']=="admin"){
                 header("location:admin/home.php");
             }
         } else{
