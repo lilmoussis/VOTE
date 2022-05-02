@@ -25,7 +25,7 @@
         <div class="vote" style="margin-left: 50px;">
             <h4 style="text-align:center;">TYPE DE VOTE</h4>
             <a name="" id="" class="btn btn-success" href="vote/home.php" role="button">Ajout candidat</a>
-            <a name="" id="" class="btn btn-danger" href="#" role="button">Resultats</a>
+            <a name="" id="" class="btn btn-danger" href="resultat/home.php" role="button">Resultats</a>
         </div>
     </div>
 </body>
