@@ -33,9 +33,12 @@ include_once "../../conf/conf.php";
 if (isset($_POST["submit"])) {
     if (isset($_POST['nom'])) {
         $nom=htmlspecialchars($_POST['nom']);
-            $sql="INSERT INTO `vote` (`nom_vote, role_vote) VALUES ( :nom, 'president')";
+            $sql="INSERT INTO `vote` (nom_vote, role_vote) VALUES ( :nom, 'president')";
             $prepare=$conn->prepare($sql);
-            $prepare->execute(['nom'=>$nom]);
+            $prepare->execute(array('nom'=>$_POST['nom'],));
+            echo "Enrégistrement effectué avec succès";
             header("Location:home.php");
+    } else{
+        echo "Echec de l'enrégistrement";
     }
 }

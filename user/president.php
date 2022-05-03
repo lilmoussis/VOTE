@@ -1,3 +1,4 @@
+<?php include '../conf/conf.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +19,18 @@
         <h3>Sélectionner votre candidat</h3>
         <div class="mt-4">
         <form action="" method="post">
-            <div class="mb-3" style="width: 300px; margin-left: 500px;">
-              <select class="form-control" name="" id="">
-                <option></option>
-                <option></option>
-                <option></option>
+            <div class="mb-4" style="width: 300px; margin-left: 530px;">
+              <select class="form-select" name="candidat" id="">
+                <?php include_once '../conf/conf.php';
+                $prepare=$conn->prepare("SELECT nom_vote from vote where role_vote= 'president' ");
+                $prepare->execute();
+                $result=$prepare->fetchAll();
+                foreach ($result as $donnee) : ?>
+                 <option class=""><?php echo $donnee['nom_vote'];?></option>
+                 <?php endforeach; ?>
               </select>
+              <br>
+              <button class="btn btn-success" name="submit" type="submit">Voter</button>
             </div>
         </form>   
         </div>
